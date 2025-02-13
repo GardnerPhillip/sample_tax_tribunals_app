@@ -1,32 +1,23 @@
-<%= form_with(model: appeal) do |form| %>
-  <% if appeal.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(appeal.errors.count, "error") %> prohibited this appeal from being saved:</h2>
+<div class="govuk-width-container">
+  <h1 class="govuk-heading-xl"><%= @appeal.new_record? ? "Create a New Appeal" : "Edit Appeal" %></h1>
 
-      <ul>
-        <% appeal.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: @appeal, local: true, class: "govuk-form") do |f| %>
+    <div class="govuk-form-group">
+      <%= f.label :title, class: "govuk-label" %>
+      <%= f.text_field :title, class: "govuk-input" %>
     </div>
+
+    <div class="govuk-form-group">
+      <%= f.label :description, class: "govuk-label" %>
+      <%= f.text_area :description, class: "govuk-textarea" %>
+    </div>
+
+    <div class="govuk-form-group">
+      <%= f.label :status, class: "govuk-label" %>
+      <%= f.select :status, ["Open", "Closed", "Pending"], {}, class: "govuk-select" %>
+    </div>
+
+    <%= f.submit "Save", class: "govuk-button govuk-button--primary" %>
+    <%= link_to "Cancel", appeals_path, class: "govuk-button govuk-button--secondary govuk-!-margin-left-2" %>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

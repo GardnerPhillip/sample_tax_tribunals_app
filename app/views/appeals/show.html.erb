@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div class="govuk-width-container">
+  <h1 class="govuk-heading-xl"><%= @appeal.title %></h1>
 
-<%= render @appeal %>
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Description</dt>
+      <dd class="govuk-summary-list__value"><%= @appeal.description %></dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Status</dt>
+      <dd class="govuk-summary-list__value"><%= @appeal.status %></dd>
+    </div>
+  </dl>
 
-<div>
-  <%= link_to "Edit this appeal", edit_appeal_path(@appeal) %> |
-  <%= link_to "Back to appeals", appeals_path %>
-
-  <%= button_to "Destroy this appeal", @appeal, method: :delete %>
+  <%= link_to "Edit Appeal", edit_appeal_path(@appeal), class: "govuk-button govuk-button--secondary" %>
+  <%= link_to "Back to Appeals", appeals_path, class: "govuk-button govuk-button--secondary govuk-!-margin-left-2" %>
 </div>

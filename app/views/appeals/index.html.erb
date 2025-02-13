@@ -1,16 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div class="govuk-width-container">
+  <h1 class="govuk-heading-xl">Appeals</h1>
 
-<% content_for :title, "Appeals" %>
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">Title</th>
+        <th class="govuk-table__header">Status</th>
+        <th class="govuk-table__header">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <% @appeals.each do |appeal| %>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= link_to appeal.title, appeal_path(appeal), class: "govuk-link" %></td>
+          <td class="govuk-table__cell"><%= appeal.status %></td>
+          <td class="govuk-table__cell">
+            <%= link_to "Edit", edit_appeal_path(appeal), class: "govuk-button govuk-button--secondary govuk-!-margin-right-2" %>
+            <%= link_to "Delete", appeal, method: :delete, data: { confirm: "Are you sure?" }, class: "govuk-button govuk-button--warning" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<h1>Appeals</h1>
-
-<div id="appeals">
-  <% @appeals.each do |appeal| %>
-    <%= render appeal %>
-    <p>
-      <%= link_to "Show this appeal", appeal %>
-    </p>
-  <% end %>
+  <%= link_to "Create New Appeal", new_appeal_path, class: "govuk-button govuk-button--primary" %>
 </div>
-
-<%= link_to "New appeal", new_appeal_path %>
