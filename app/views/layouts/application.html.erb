@@ -8,16 +8,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
-
     <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
 
     <%= stylesheet_link_tag "govuk/index", "data-turbo-track": "reload" %>
 
@@ -35,7 +26,7 @@
         <nav class="govuk-header__navigation">
           <% if user_signed_in? %>
             <p class="govuk-body">Welcome, <%= current_user.email %>!</p>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "govuk-link" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "govuk-link" %>
           <% else %>
             <%= link_to "Sign Up", new_user_registration_path, class: "govuk-link" %> |
             <%= link_to "Login", new_user_session_path, class: "govuk-link" %>
