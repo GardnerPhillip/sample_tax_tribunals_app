@@ -1,2 +1,28 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <h1 class="govuk-heading-xl">Welcome to the demo</h1>
+    <p class="govuk-body">
+      This is the app for managing appeals and cases.
+    </p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-m">Get Started</h2>
+        <p class="govuk-body">
+          <%= link_to "View Appeals", appeals_path, class: "govuk-button" %>
+        </p>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-m">Manage Your Account</h2>
+        <% if user_signed_in? %>
+          <p class="govuk-body">Welcome, <%= current_user.email %>!</p>
+          <%= form_with url: destroy_user_session_path, method: :delete do %>
+            <%= submit_tag "Logout", class: "govuk-button govuk-button--warning" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "govuk-button govuk-button--secondary" %>
+          <%= link_to "Login", new_user_session_path, class: "govuk-button govuk-button--primary" %>
+        <% end %>
+      </div>
+    </div>
+  </main>
+</div>

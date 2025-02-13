@@ -20,18 +20,32 @@
       <div class="govuk-header__container govuk-width-container">
         <div class="govuk-header__logo">
           <a href="/" class="govuk-header__link govuk-header__link--homepage">
-            Tax and Tribunals Demo
+            Tax Tribunals App
           </a>
         </div>
         <nav class="govuk-header__navigation">
-          <% if user_signed_in? %>
-            <p class="govuk-body">Welcome, <%= current_user.email %>!</p>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "govuk-link" %>
-          <% else %>
-            <%= link_to "Sign Up", new_user_registration_path, class: "govuk-link" %> |
-            <%= link_to "Login", new_user_session_path, class: "govuk-link" %>
-          <% end %>
-          <%= link_to "Appeals", appeals_path, class: "govuk-link" %>
+          <ul class="govuk-header__navigation-list">
+            <% if user_signed_in? %>
+              <li class="govuk-header__navigation-item">
+                <span class="govuk-!-color-white">Welcome, <%= current_user.email %></span>
+              </li>
+              <li class="govuk-header__navigation-item">
+                <%= form_with url: destroy_user_session_path, method: :delete do %>
+                  <%= submit_tag "Logout" %>
+                <% end %>
+              </li>
+            <% else %>
+              <li class="govuk-header__navigation-item">
+                <%= link_to "Sign Up", new_user_registration_path, class: "govuk-header__link" %>
+              </li>
+              <li class="govuk-header__navigation-item">
+                <%= link_to "Login", new_user_session_path, class: "govuk-header__link" %>
+              </li>
+            <% end %>
+            <li class="govuk-header__navigation-item">
+              <%= link_to "Appeals", appeals_path, class: "govuk-header__link" %>
+            </li>
+          </ul>
         </nav>
       </div>
     </header>
