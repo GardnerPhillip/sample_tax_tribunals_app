@@ -1,0 +1,59 @@
+// GOV.UK Frontend
+$govuk-global-styles: true;
+$govuk-new-typography-scale: true;
+
+$govuk-fonts-path: 'govuk-frontend/dist/govuk/assets/fonts/';
+$govuk-images-path: 'govuk-frontend/dist/govuk/assets/images/';
+
+@import "govuk-frontend/dist/govuk/index";
+
+@import 'local/address_lookup';
+@import 'local/banners';
+@import 'local/check_answers';
+@import 'local/developer_tools';
+@import 'local/lists';
+@import 'local/panels';
+@import 'local/positioning_hacks';
+@import 'local/print';
+@import 'local/single_file_upload';
+@import 'local/spinner';
+@import 'local/tables';
+@import 'local/timeout_modal';
+@import 'local/typography';
+@import 'local/utilities';
+@import 'local/js_enabled';
+@import 'local/send_application_details';
+@import 'local/hearing_support';
+@import 'local/admin';
+
+// Dropzone vendor styling + local customization
+@import 'dropzone';
+@import 'local/dropzone';
+
+.margin-left-40 {
+  margin-left: 40px;
+}
+
+.margin-left-100 {
+  margin-left: 100px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-bottom-400 {
+  margin-bottom: 400px;
+}
+
+.min-height-600 {
+  min-height: 600px;
+}
+
+.display-none {
+  display:none;
+}
+
+.visibility-hidden {
+  visibility:hidden;
+}

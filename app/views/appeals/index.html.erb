@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Appeals" %>
+
+<h1>Appeals</h1>
+
+<div id="appeals">
+  <% @appeals.each do |appeal| %>
+    <%= render appeal %>
+    <p>
+      <%= link_to "Show this appeal", appeal %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New appeal", new_appeal_path %>

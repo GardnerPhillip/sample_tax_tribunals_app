@@ -1,0 +1,12 @@
+<% content_for :title, "Editing appeal" %>
+
+<h1>Editing appeal</h1>
+
+<%= render "form", appeal: @appeal %>
+
+<br>
+
+<div>
+  <%= link_to "Show this appeal", @appeal %> |
+  <%= link_to "Back to appeals", appeals_path %>
+</div>
